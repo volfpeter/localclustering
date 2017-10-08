@@ -1,7 +1,7 @@
 LocalClustering
 ====================
 
-The library implements multiple variations of a local graph clustering algorithm
+The library implements multiple variations of a local graph clustering algorithm_
 named the *Hermina-Janos algorithm* in memory of my beloved grandparents.
 
 Besides the clustering algorithms themselves, the library also contains a cluster
@@ -62,6 +62,7 @@ following types of contributions are especially appreciated:
 - etc.
 
 
+.. _algorithm: https://github.com/volfpeter/localclustering/blob/master/documents/algorithm.rst
 .. _AGPLv3: https://choosealicense.com/licenses/agpl-3.0/
 .. _documents: https://github.com/volfpeter/localclustering/tree/master/documents
 .. _Flask-SQLAlchemy: http://flask-sqlalchemy.pocoo.org/

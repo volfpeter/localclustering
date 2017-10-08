@@ -24,7 +24,12 @@ __author__ = 'Peter Volf'
 
 
 class LocalClusterEngine(object):
-    """This class implements the local cluster engine."""
+    """
+    The default implementation of the Hermina-Janos local clustering algorithm.
+
+    The way the algorithm works is detailed in the following document:
+    https://github.com/volfpeter/localclustering/blob/master/documents/algorithm.rst
+    """
 
     # Initialization
     # ------------------------------------------------------------

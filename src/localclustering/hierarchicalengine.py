@@ -26,8 +26,13 @@ __author__ = 'Peter Volf'
 
 class HierarchicalClusterEngine(object):
     """
-    This class implements the hierarchical local cluster engine using a `LocalClusterEngine` to calculate the
-    cluster for each hierarchy level.
+    The default implementation of the Hermina-Janos hierarchical local clustering algorithm.
+
+    This class implements the hierarchical local clustering algorithm by wrapping a
+    `LocalClusterEngine` to calculate the cluster for each hierarchy level.
+
+    The way the algorithm works is detailed in the following document:
+    https://github.com/volfpeter/localclustering/blob/master/documents/algorithm.rst
     """
 
     # Initialization
