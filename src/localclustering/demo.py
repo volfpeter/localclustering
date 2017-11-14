@@ -116,9 +116,9 @@ def do_cluster(graph: IGraphWrapper,
         raise ValueError("The created cluster is invalid.")
 
     # Calculate the visual properties of the nodes.
-    colors = [c for c in default_colors]
-    shapes = [s for s in default_shapes]
-    sizes = [s for s in default_sizes]
+    colors = default_colors[:]
+    shapes = default_shapes[:]
+    sizes = default_sizes[:]
 
     for node in cluster.nodes:
         igraph_index: int = node.igraph_index
