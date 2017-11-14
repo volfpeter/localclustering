@@ -60,7 +60,7 @@ class Cluster(object):
         Returns whether the cluster contains the given node. By implementing this method,
         we let the users use the `in` operator on the instances of this class.
 
-        Args:
+        Arguments:
             node (Node): The node to check.
 
         Returns:
@@ -140,7 +140,7 @@ class Cluster(object):
         """
         Adds the given node to the cluster and marks it as one of the source nodes.
 
-        Args:
+        Arguments:
             node (Node): The source node to be added to the cluster.
         """
         if node is None:
@@ -166,7 +166,7 @@ class Cluster(object):
         """
         Adds the given node to the cluster.
 
-        Args:
+        Arguments:
             node (Node): The node to be added to the cluster.
         """
         if node is None:
@@ -207,7 +207,7 @@ class Cluster(object):
         """
         Adds all nodes in the given list to the cluster.
 
-        Args:
+        Arguments:
             nodes (List[Node]): The list of nodes to add to the cluster.
         """
         for node in nodes:
@@ -217,11 +217,23 @@ class Cluster(object):
         """
         Adds all nodes in the given list to the cluster as source nodes.
 
-        Args:
+        Arguments:
             nodes (List[Node]): The list of source nodes to add to the cluster.
         """
         for node in nodes:
             self.add_source_node(node)
+
+    def is_in_cluster(self, node: Node) -> bool:
+        """
+        Returns whether the given node is in the cluster.
+
+        Arguments:
+            node (Node): The node to check.
+
+        Returns:
+            bool: Whether the given node is in the cluster.
+        """
+        return node in self
 
     def is_neighbor(self, node: Node) -> bool:
         """
@@ -230,7 +242,7 @@ class Cluster(object):
         Note that the result of this method is not accurate when the cluster is being modified.
         In this case the protected `_is_neighbor_of_cluster()` method should be used.
 
-        Args:
+        Arguments:
             node (Node): The node to check.
 
         Returns:
@@ -253,7 +265,7 @@ class Cluster(object):
         """
         Returns whether the given node is one of the sources of the cluster.
 
-        Args:
+        Arguments:
             node (Node): The node to check.
 
         Returns:
@@ -276,7 +288,7 @@ class Cluster(object):
         """
         Removes the given node from the cluster if it is a source node.
 
-        Args:
+        Arguments:
             node (Node): The node to remove from the cluster.
         """
         if node not in self or not self.is_source_node(node):
@@ -290,7 +302,7 @@ class Cluster(object):
         """
         Removes all source nodes in the given list from the cluster.
 
-        Args:
+        Arguments:
             nodes (List[Node]): The list of source nodes to remove from the cluster.
         """
         if nodes is None:
@@ -303,7 +315,7 @@ class Cluster(object):
         """
         Removes the given node from the cluster if it is not a source node.
 
-        Args:
+        Arguments:
             node (Node): The node to remove from the cluster.
         """
         if node not in self or self.is_source_node(node):
@@ -315,7 +327,7 @@ class Cluster(object):
         """
         Removes all non-source nodes in the given list from the cluster.
 
-        Args:
+        Arguments:
             nodes (List[Node]): The list of nodes to remove from the cluster.
         """
         if nodes is None:
@@ -331,7 +343,7 @@ class Cluster(object):
         """
         Returns the JSON representation of the subgraph corresponding to the cluster.
 
-        Args:
+        Arguments:
             max_distance_from_cluster (int):
                 The maximum distance of the included nodes from the cluster. 0 means only the
                 nodes in the cluster will be included in the result, 1 means the immediate
@@ -472,7 +484,7 @@ class Cluster(object):
         `is_neighbor()` there which in turn is not accurate when the cluster is being updated but
         is accurate in all other cases.
 
-        Args:
+        Arguments:
             node (Node): The node to check.
 
         Returns:
@@ -492,7 +504,7 @@ class Cluster(object):
         """
         Removes the given node from the cluster.
 
-        Args:
+        Arguments:
             node (Node): The node to remove from the cluster.
         """
         # Remove the node.
@@ -602,7 +614,7 @@ class Cluster(object):
         """
         Event handler called when a neighbor is added to a node that is contained by the cluster.
 
-        Args:
+        Arguments:
             event (Event): The event dispatched by the node.
         """
         # Keep the cluster degree up to date.
