@@ -9,8 +9,9 @@ from typing import Dict, Iterable, List, Optional
 
 from operator import attrgetter
 
-from localclustering.definitions.util import GainDescriptor
 from graphscraper.base import Node
+
+from localclustering.definitions.util import GainDescriptor
 
 # Module constants
 # ------------------------------------------------------------
@@ -29,7 +30,7 @@ class StepDescriptor(object):
     # Initialization
     # ------------------------------------------------------------
 
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Initialization.
         """
@@ -46,16 +47,16 @@ class StepDescriptor(object):
         The string representation of the object.
         """
         result: List[str] =\
-            ["Added: {} - {}".format(descriptor.node.name.encode("utf8"), descriptor.coefficient_multiplier)
+            ["Added: {}".format(descriptor.node.name.encode("utf8"))
              for descriptor in sorted(self._added_nodes.values(), key=attrgetter("node.name"))]
         result.extend(
-            ["Not added: {} - {}".format(descriptor.node.name.encode("utf8"), descriptor.coefficient_multiplier)
+            ["Not added: {}".format(descriptor.node.name.encode("utf8"))
              for descriptor in sorted(self._not_added_nodes.values(), key=attrgetter("node.name"))])
         result.extend(
-            ["Removed: {} - {}".format(descriptor.node.name.encode("utf8"), descriptor.coefficient_multiplier)
+            ["Removed: {}".format(descriptor.node.name.encode("utf8"))
              for descriptor in sorted(self._removed_nodes.values(), key=attrgetter("node.name"))])
         result.extend(
-            ["Not removed: {} - {}".format(descriptor.node.name.encode("utf8"), descriptor.coefficient_multiplier)
+            ["Not removed: {}".format(descriptor.node.name.encode("utf8"))
              for descriptor in sorted(self._not_removed_nodes.values(), key=attrgetter("node.name"))])
         return "\n".join(result)
 

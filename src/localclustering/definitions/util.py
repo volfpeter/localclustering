@@ -22,7 +22,7 @@ class GainDescriptor(object):
     # Initialization
     # ------------------------------------------------------------
 
-    def __init__(self, node: Node, result: bool):
+    def __init__(self, node: Node, result: bool) -> None:
         """
         Initialization.
 

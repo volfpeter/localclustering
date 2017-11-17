@@ -86,7 +86,7 @@ class StepHistoryRankProvider(BaseRankProvider):
     # Initialization
     # ------------------------------------------------------------
 
-    def __init__(self, step_history: StepHistory):
+    def __init__(self, step_history: StepHistory) -> None:
         """
         Initialization.
 

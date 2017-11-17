@@ -37,7 +37,7 @@ class LocalClusterEngine(object):
     def __init__(self,
                  cluster_definition: ClusterDefinition = None,
                  source_nodes_in_result: bool = True,
-                 max_cluster_size: int = 100):
+                 max_cluster_size: int = 100) -> None:
         """
         Initialization.
 

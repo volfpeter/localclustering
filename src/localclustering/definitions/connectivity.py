@@ -30,7 +30,11 @@ class ConnectivityGainDescriptor(GainDescriptor):
     # Initialization
     # ------------------------------------------------------------
 
-    def __init__(self, node: Node, result: bool, weighting_coefficient: float, coefficient_multiplier: float = 0):
+    def __init__(self,
+                 node: Node,
+                 result: bool,
+                 weighting_coefficient: float,
+                 coefficient_multiplier: float = 0) -> None:
         """
         Initialization.
 
