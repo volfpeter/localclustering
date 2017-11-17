@@ -11,6 +11,7 @@ from typing import Iterable, List, Optional
 from operator import attrgetter
 
 from graphscraper.base import Node
+
 from localclustering.history import StepHistory
 
 # Module constants
@@ -33,7 +34,7 @@ class BaseRankProvider(object):
         Returns the list of ranks/scores for the given nodes. The ith item in the returned list of ranks
         corresponds to the ith node in the received list of nodes.
 
-        Args:
+        Arguments:
             nodes (Iterable[Node]): The list of nodes to rank.
 
         Returns:
@@ -45,7 +46,7 @@ class BaseRankProvider(object):
         """
         Returns the rank/score of the given node.
 
-        Args:
+        Arguments:
             node (Node): The node to rank.
 
         Returns:
@@ -59,7 +60,7 @@ class BaseRankProvider(object):
         Sorts the given nodes by their rank. If multiple nodes have the same rank, then they will be
         sorted by their name, in ascending order.
 
-        Args:
+        Arguments:
             nodes (Optional[List[Node]]): The list of nodes to sort.
             reverse (bool): If `True`, then the nodes will be ordered in descending order, otherwise
                             in ascending order.
@@ -89,7 +90,7 @@ class StepHistoryRankProvider(BaseRankProvider):
         """
         Initialization.
 
-        Args:
+        Arguments:
             step_history (StepHistory): The `StepHistory` object the rank provider
                                         is using to determine the rank of nodes.
         """
@@ -102,7 +103,7 @@ class StepHistoryRankProvider(BaseRankProvider):
         """
         Returns the rank/score of the given node.
 
-        Args:
+        Arguments:
             node (Node): The node to rank.
 
         Returns:
@@ -117,11 +118,4 @@ class StepHistoryRankProvider(BaseRankProvider):
             return -2
 
         gain_descriptor = step_descriptor.get_gain_descriptor_for_node(node)
-        if gain_descriptor is None:
-            return -1
-
-        # Avoid zero division error.
-        if gain_descriptor.coefficient_multiplier == 0:
-            return 0
-
-        return gain_descriptor.weighting_coefficient / gain_descriptor.coefficient_multiplier
+        return gain_descriptor.get_rank() if gain_descriptor is not None else -1

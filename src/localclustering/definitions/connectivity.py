@@ -8,6 +8,7 @@ Connectivity based `ClusterDefinition` implementations, utility classes and meth
 from typing import List, Optional
 
 from graphscraper.base import Node
+
 from localclustering.cluster import Cluster
 from localclustering.definitions.base import HierarchicalClusterDefinition
 from localclustering.definitions.util import GainDescriptor
@@ -21,8 +22,53 @@ __author__ = 'Peter Volf'
 # ------------------------------------------------------------
 
 
+class ConnectivityGainDescriptor(GainDescriptor):
+    """
+    Specialized `GainDescriptor` for `ConnectivityClusterDefinition`.
+    """
+
+    # Initialization
+    # ------------------------------------------------------------
+
+    def __init__(self, node: Node, result: bool, weighting_coefficient: float, coefficient_multiplier: float = 0):
+        """
+        Initialization.
+
+        Arguments:
+            node (Node): The node for which this descriptor was calculated.
+            result (bool): Whether the inclusion or exclusion of the given node would increase cluster quality.
+            weighting_coefficient (float): The edge weighting coefficient in effect when this gain descriptor
+                                           was calculated.
+            coefficient_multiplier (float): Multiplier for the edge weighting coefficient that should be applied to
+                                            make the cluster definition include the given node in the cluster.
+        """
+        super(ConnectivityGainDescriptor, self).__init__(node, result)
+
+        self.weighting_coefficient: float = weighting_coefficient
+        """
+        The edge weighting coefficient in effect when this gain descriptor was calculated.
+        """
+        self.coefficient_multiplier: float = coefficient_multiplier
+        """
+        Multiplier for the edge weighting coefficient that should be applied to
+        make the cluster definition include the given node in the cluster.
+        """
+
+    def get_rank(self) -> float:
+        """
+        Returns the rank of the node corresponding to this gain descriptor if the gain descriptor is able
+        to calculate a rank for the node.
+        """
+        if self.coefficient_multiplier == 0:
+            return 0
+
+        return self.weighting_coefficient / self.coefficient_multiplier
+
+
 class ConnectivityClusterDefinition(HierarchicalClusterDefinition):
-    """A simple, connectivity based `HierarchicalClusterDefinition` implementation."""
+    """
+    A simple, connectivity based `HierarchicalClusterDefinition` implementation.
+    """
 
     # Initialization
     # ------------------------------------------------------------
@@ -31,7 +77,7 @@ class ConnectivityClusterDefinition(HierarchicalClusterDefinition):
         """
         Initialization.
 
-        Args:
+        Arguments:
             weighting_coefficient (float): The edge weighting the cluster definition will use.
                                            This value must be a positive floating point number.
             threshold_modifier (float): The threshold calculated by the cluster definition will be multiplied with
@@ -54,14 +100,14 @@ class ConnectivityClusterDefinition(HierarchicalClusterDefinition):
     # Public methods
     # ------------------------------------------------------------
 
-    def adjust_definition_for_next_hierarchy_level(self, gain_descriptors: List[GainDescriptor]) -> bool:
+    def adjust_definition_for_next_hierarchy_level(self, gain_descriptors: List[ConnectivityGainDescriptor]) -> bool:
         """
         Adjusts the cluster cluster definition for the next cluster hierarchy level based on the received list
         of gain descriptors.
 
-        Args:
-            gain_descriptors(Iterable[GainDescriptor]): The list of gain descriptors created during the latest
-                                                        step of the hierarchical clustering.
+        Arguments:
+            gain_descriptors(Iterable[ConnectivityGainDescriptor]): The list of gain descriptors created during the
+                                                                    latest step of the hierarchical clustering.
 
         Returns:
             Whether the cluster definition was successfully adjusted for the next cluster hierarchy level.
@@ -83,7 +129,7 @@ class ConnectivityClusterDefinition(HierarchicalClusterDefinition):
         self.weighting_coefficient *= coefficient_multiplier
         return True
 
-    def clone(self, base: Optional["ClusterDefinition"] = None):
+    def clone(self, base: Optional["ConnectivityClusterDefinition"] = None):
         """
         Clones the cluster definition.
 
@@ -108,7 +154,7 @@ class ConnectivityClusterDefinition(HierarchicalClusterDefinition):
         """
         Calculates the gain of the inclusion of the given node in the cluster.
 
-        Args:
+        Arguments:
             node (Node): The node to calculate the gain of the inclusion for.
             cluster (Cluster): The cluster for which the gain of the inclusion should be calculated for.
 
@@ -136,18 +182,20 @@ class ConnectivityClusterDefinition(HierarchicalClusterDefinition):
                 node_degree,
                 cluster_degree / cluster_size
             )
-            return GainDescriptor(node,
-                                  quality_difference >= threshold,
-                                  self.weighting_coefficient,
-                                  threshold / quality_difference)
+            return ConnectivityGainDescriptor(
+                node,
+                quality_difference >= threshold,
+                self.weighting_coefficient,
+                threshold / quality_difference
+            )
         else:
-            return GainDescriptor(node, False, self.weighting_coefficient, 0)
+            return ConnectivityGainDescriptor(node, False, self.weighting_coefficient, 0)
 
     def gain_of_exclusion(self, node: Node, cluster: Cluster) -> GainDescriptor:
         """
         Calculates the gain of the exclusion of the given node from the cluster.
 
-        Args:
+        Arguments:
             node (Node): The node to calculate the gain of the exclusion for.
             cluster (Cluster): The cluster for which the gain of the exclusion should be calculated for.
 
@@ -175,9 +223,11 @@ class ConnectivityClusterDefinition(HierarchicalClusterDefinition):
                 node_degree,
                 cluster_degree / cluster_size
             )
-            return GainDescriptor(node,
-                                  quality_difference < threshold,
-                                  self.weighting_coefficient,
-                                  threshold / quality_difference)
+            return ConnectivityGainDescriptor(
+                node,
+                quality_difference < threshold,
+                self.weighting_coefficient,
+                threshold / quality_difference
+            )
         else:
-            return GainDescriptor(node, True, self.weighting_coefficient, 0)
+            return ConnectivityGainDescriptor(node, True, self.weighting_coefficient, 0)
