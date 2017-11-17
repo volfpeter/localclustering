@@ -179,16 +179,11 @@ class StepDescriptor(object):
         Returns:
             `True` if this step descriptor is equivalent to `other`, `False` otherwise.
         """
-        if other is None:
-            return False
-
-        # We take the liberty of ignoring the nodes that were neither added nor removed in this step.
-        # In some very special cases this could lead to invalid results, but we'll take that risk.
-
-        if self.number_of_added_nodes != other.number_of_added_nodes:
-            return False
-
-        if self.number_of_removed_nodes != other.number_of_removed_nodes:
+        if other is None or\
+           self.number_of_added_nodes != other.number_of_added_nodes or \
+           self.number_of_removed_nodes != other.number_of_removed_nodes or\
+           len(self._not_added_nodes) != len(other._not_added_nodes) or\
+           len(self._not_removed_nodes) != len(other._not_removed_nodes):
             return False
 
         for key in self._added_nodes:
@@ -198,6 +193,8 @@ class StepDescriptor(object):
         for key in self._removed_nodes:
             if other._removed_nodes.get(key) is None:
                 return False
+
+        # Don't compare the not added or not removed nodes one-by-one.
 
         return True
 
@@ -339,10 +336,11 @@ class StepHistory(object):
         if last_descriptor.is_deadlock:
             return [last_descriptor]
 
-        descriptors_to_check: List[StepDescriptor] = self._history[-1 - max_sequence_length: -1]
-        for index, descriptor in enumerate(descriptors_to_check):
+        length: int = len(self)
+        for index in range(max(length - 1 - max_sequence_length, 0), length - 1):
+            descriptor: StepDescriptor = self._history[index]
             if last_descriptor.is_equivalent_to(descriptor):
-                return descriptors_to_check[index:]
+                return self._history[index:]
 
         return None
 

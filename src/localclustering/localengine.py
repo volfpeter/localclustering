@@ -172,13 +172,11 @@ class LocalClusterEngine(object):
 
         while True:
             step_descriptor = self._step_history.step()
-            cluster_size = len(cluster)
 
             self._expand_cluster(step_descriptor)
             self._reduce_cluster(step_descriptor)
 
-            if (cluster_size == len(cluster) and self._step_history.find_loop()) or\
-               self.max_cluster_size <= len(self._cluster):
+            if self.max_cluster_size <= len(self._cluster) or self._step_history.find_loop():
                 # TODO: Could we do some polishing on the created cluster here?
                 break
 
