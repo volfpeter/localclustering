@@ -8,7 +8,7 @@ with open(path.join(path.abspath(path.dirname(__file__)), 'README.rst'), encodin
 
 setup(
     name="localclustering",
-    version="0.1.0",
+    version="0.10.0",
     description="Python 3 implementation and documentation of the Hermina-Janos local "
                 "graph clustering algorithm.",
     long_description=long_description,
