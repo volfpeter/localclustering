@@ -1,32 +1,22 @@
 LocalClustering
 ====================
 
-The library implements multiple variations of a local graph clustering algorithm_
+The library implements multiple variations of a local graph clustering algorithm
 named the *Hermina-Janos algorithm* in memory of my beloved grandparents.
 
-Besides the clustering algorithms themselves, the library also contains a cluster
-implementation (obviously) and utility classes for i) ranking the nodes the algorithms
-have seen during the clustering process and ii) recording the steps the clustering
-algorithms have taken.
+For the description of the algorithms, have a look at `this document <https://github.com/volfpeter/localclustering/blob/master/documents/algorithm.rst>`_.
+For an evaluation and demo of the algorithms using the Spotify artist similarity graph, look at the attached `IPython notebook`_.
 
-See the documents_ included in the library for more details.
-
-Local clustering
----------------------
-
-A graph clustering algorithm is called local if its goal is to find the cluster
-of one or more "source" nodes without looking at whole graph. In other words
-a local algorithm starts out from the source nodes and at each step only looks
-at the nodes it has seen so far and their neighbors to find the cluster the
-source nodes belong to.
+Besides the clustering algorithms themselves, the library also contains a specialized cluster
+implementation, cluster definitions and a ranking module.
 
 Demo
 ---------
 
-The library contains a demo module that shows the basic usage of this project.
-If you wish to run the demo, you will first need to install the igraph_ and
-cairo_ libraries and their Python interfaces besides the default dependencies
-of the library.
+Besides the already mentioned `IPython notebook`_, the library contains a demo module
+that shows the basic usage of this project. If you wish to run the demo, you will first
+need to install the igraph_ and cairo_ libraries and their Python interfaces besides
+the default dependencies of the library.
 
 Dependencies
 -----------------
@@ -61,11 +51,9 @@ following types of contributions are especially appreciated:
 
 - etc.
 
-
-.. _algorithm: https://github.com/volfpeter/localclustering/blob/master/documents/algorithm.rst
 .. _AGPLv3: https://choosealicense.com/licenses/agpl-3.0/
-.. _documents: https://github.com/volfpeter/localclustering/tree/master/documents
 .. _Flask-SQLAlchemy: http://flask-sqlalchemy.pocoo.org/
+.. _`IPython notebook`: https://github.com/volfpeter/localclustering/blob/master/documents/Algorithm%20Analysis%20with%20the%20Spotify%20Related%20Artists%20Graph.ipynb
 .. _library: https://github.com/volfpeter/graphscraper
 .. _License: https://choosealicense.com/licenses/agpl-3.0/
 .. _GraphScraper: https://pypi.python.org/pypi/graphscraper
