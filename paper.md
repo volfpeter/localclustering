@@ -8,7 +8,12 @@ tags:
 authors:
   - name: Peter Volf
     orcid: 0000-0002-6226-4277
+    affiliation: 1
+affiliations:
+  - name: Independent
+    index: 1
 date: 14 September 2018
+bibliography: paper.bib
 ---
 
 # Local clustering
@@ -38,6 +43,8 @@ The Hermina-Janos algorithm is a simple iterative process that repeats the follo
 1. Expansion step: For each node in the neighbourhood of the cluster, decide whether adding it to the cluster would increase the cluster's quality, collect all the neighbours whose addition would improve the cluster and add them to the cluster in one step.
 2. Reduction step: For each node on the border of the cluster, decide whether removing it from the cluster would increase the cluster's quality, collect all the nodes whose removal would improve the cluster and remove them from the cluster in one step.
 
+![Example result of local clustering.](https://github.com/volfpeter/localclustering/blob/master/documents/cluster_example.png)
+
 ### Hierarchical local clustering algorithm
 
 The hierarchical version of the Hermina-Janos local clustering algorithm extends the base version with an extra layer that allows it uncover clusters at different hierarchy levels or "distances" from the source nodes of the cluster analysis.
@@ -63,3 +70,4 @@ These are the main resources besides the source code:
 * [This notebook](https://github.com/volfpeter/localclustering/blob/master/documents/Algorithm%20Analysis%20with%20the%20Spotify%20Related%20Artists%20Graph.ipynb) provides a demo and in-depth evaluation of the algorithms and the ranking component using Spotify's Related Artists graph.
 
 
+## References
