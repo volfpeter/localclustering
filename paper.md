@@ -1,3 +1,16 @@
+---
+title: "Local clustering"
+tags:
+  - Python
+  - graph theory
+  - clustering algorithm
+  - ranking
+authors:
+  - name: Peter Volf
+    orcid: 0000-0002-6226-4277
+date: 14 September 2018
+---
+
 # Local clustering
 
 |   Author   |      ORCID ID       |    Date    |
