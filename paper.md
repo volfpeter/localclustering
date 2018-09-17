@@ -20,7 +20,9 @@ bibliography: paper.bib
 
 Graph clustering algorithms aim to divide the nodes of a graph into one or more groups or clusters based on some measure of similarity. There are many different ways to define a cluster depending on the goal of the analysis. In graph cluster analysis the usual definition of a cluster is a group of nodes that are relatively densely interconnected but have few connections towards the nodes outside the cluster.
 
-Local clustering algorithms get a small set of source nodes (typically a single node) as input and calculate the cluster they belong to in the graph. While doing so, local algorithms are only allowed to look at the already visited nodes of the graph and their neighbours.
+For an overview of graph clustering see [@Schaeffer:2007]. The more developed field within graph clustering is global clustering. Global algorithms are allowed to look at the whole graph while calculating its clusters. Well known global clustering algorithms include [@Blondel:2008], [@Dongen:2000], [@Newman:2004], [@Newman:2006], [@Pons:2006] and [@Raghavan:2007].
+
+On the other hand, local clustering algorithms get a small set of source nodes (typically a single node) as input and calculate the cluster they belong to in the graph. While doing so, local algorithms are only allowed to look at the already visited nodes of the graph and their neighbours.
 
 # Algorithm
 
@@ -32,6 +34,8 @@ The Hermina-Janos algorithm is a simple iterative process that repeats the follo
 
 1. Expansion step: For each node in the neighbourhood of the cluster, decide whether adding it to the cluster would increase the cluster's quality, collect all the neighbours whose addition would improve the cluster and add them to the cluster in one step.
 2. Reduction step: For each node on the border of the cluster, decide whether removing it from the cluster would increase the cluster's quality, collect all the nodes whose removal would improve the cluster and remove them from the cluster in one step.
+
+The process can be thought of as a sort of label propagation ([@Raghavan:2007]), where the cluster competes against its surroundings until an equilibrium is reached.
 
 ![The cluster of Elvis Presley in Spotify's Related Artists graph.](https://raw.githubusercontent.com/volfpeter/localclustering/master/documents/cluster_example.png)
 
@@ -49,6 +53,15 @@ Similarly to the base algorithm, the hierarchical Hermina-Janos algorithm is als
 The package provides a ranking component that can be used to rank the nodes in the cluster and their neighbours by their importance or contribution to the cluster.
 
 A component for recording the steps the algorithms have taken is also provided. It makes it possible to trace back each decision and step the algorithms have taken to see exactly how the result was calculated.
+
+# Ideas for future work
+
+Here are some ideas for future work:
+
+- Reimplementation for parallel computing: Most of the calculations the algorithms make (the only exception being the actual cluster update) can be executed in parallel, that could significantly improve performace.
+- New cluster definitions: Only one cluster definition is provided in the package. More cluster definitions can be implemented for example by building on cluster quality metrics such as modularity ([@Newman:2004]).
+- Analysis of how cluster definitions should be configured for graphs with different characteristics.
+- Result comparison with global clustering algorithms on well-known and -analyzed graphs such as the Zachary karate club ([@Zachary:1977]).
 
 # Resources
 
