@@ -35,7 +35,7 @@ The Hermina-Janos algorithm is a simple iterative process that repeats the follo
 1. Expansion step: For each node in the neighbourhood of the cluster, decide whether adding it to the cluster would increase the cluster's quality, collect all the neighbours whose addition would improve the cluster and add them to the cluster in one step.
 2. Reduction step: For each node on the border of the cluster, decide whether removing it from the cluster would increase the cluster's quality, collect all the nodes whose removal would improve the cluster and remove them from the cluster in one step.
 
-The process can be thought of as a sort of label propagation ([@Raghavan:2007]), where the cluster competes against its surroundings until an equilibrium is reached.
+The process can be thought of as a sort of label propagation [@Raghavan:2007], where the cluster competes against its surroundings until an equilibrium is reached.
 
 ![The cluster of Elvis Presley in Spotify's Related Artists graph.](https://raw.githubusercontent.com/volfpeter/localclustering/master/documents/cluster_example.png)
 
@@ -59,9 +59,9 @@ A component for recording the steps the algorithms have taken is also provided. 
 Here are some ideas for future work:
 
 - Reimplementation for parallel computing: Most of the calculations the algorithms make (the only exception being the actual cluster update) can be executed in parallel, that could significantly improve performace.
-- New cluster definitions: Only one cluster definition is provided in the package. More cluster definitions can be implemented for example by building on cluster quality metrics such as modularity ([@Newman:2004]).
+- New cluster definitions: Only one cluster definition is provided in the package. More cluster definitions can be implemented for example by building on cluster quality metrics such as modularity [@Newman:2004].
 - Analysis of how cluster definitions should be configured for graphs with different characteristics.
-- Result comparison with global clustering algorithms on well-known and -analyzed graphs such as the Zachary karate club ([@Zachary:1977]).
+- Result comparison with global clustering algorithms on well-known and -analyzed graphs such as the Zachary karate club [@Zachary:1977].
 
 # Resources
 
