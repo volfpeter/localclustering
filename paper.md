@@ -33,7 +33,7 @@ The Hermina-Janos algorithm is a simple iterative process that repeats the follo
 1. Expansion step: For each node in the neighbourhood of the cluster, decide whether adding it to the cluster would increase the cluster's quality, collect all the neighbours whose addition would improve the cluster and add them to the cluster in one step.
 2. Reduction step: For each node on the border of the cluster, decide whether removing it from the cluster would increase the cluster's quality, collect all the nodes whose removal would improve the cluster and remove them from the cluster in one step.
 
-![Example result of local clustering.](https://raw.githubusercontent.com/volfpeter/localclustering/master/documents/cluster_example.png)
+![The cluster of Elvis Presley in Spotify's Related Artists graph.](https://raw.githubusercontent.com/volfpeter/localclustering/master/documents/cluster_example.png)
 
 ## Hierarchical local clustering algorithm
 
