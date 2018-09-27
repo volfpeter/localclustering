@@ -1,5 +1,5 @@
 *.pyc
-.idea
+.mypy_cache
 *egg-info*
 build
 dist
