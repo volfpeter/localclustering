@@ -10,7 +10,7 @@ authors:
     orcid: 0000-0002-6226-4277
     affiliation: 1
 affiliations:
-  - name: None
+  - name: Independent developer
     index: 1
 date: 14 September 2018
 bibliography: paper.bib
@@ -37,7 +37,7 @@ The Hermina-Janos algorithm is a simple iterative process that repeats the follo
 
 The process can be thought of as a sort of label propagation [@Raghavan:2007], where the cluster competes against its surroundings until an equilibrium is reached.
 
-![The cluster of Elvis Presley in Spotify's Related Artists graph.](https://raw.githubusercontent.com/volfpeter/localclustering/master/documents/cluster_example.png)
+![The cluster of Elvis Presley in Spotify's Related Artists graph.](documents/cluster_example.png)
 
 ## Hierarchical local clustering algorithm
 
