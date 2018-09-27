@@ -3,12 +3,12 @@ from os import path
 from setuptools import setup, find_packages
 
 # Get the long description from the README file
-with open(path.join(path.abspath(path.dirname(__file__)), 'README.rst'), encoding='utf-8') as f:
+with open(path.join(path.abspath(path.dirname(__file__)), 'pypi_readme.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
     name="localclustering",
-    version="0.10.0",
+    version="0.11.0",
     description="Python 3 implementation and documentation of the Hermina-Janos local "
                 "graph clustering algorithm.",
     long_description=long_description,
@@ -34,5 +34,6 @@ setup(
     keywords="graph network analysis cluster clustering ranking local hierarchical algorithm",
     package_dir={"": "src"},
     packages=find_packages("src"),
-    python_requires=">=3"
+    install_requires=["graphscraper>=0.4"],
+    python_requires=">=3.5"
 )
