@@ -19,7 +19,7 @@ This section will guide you through the basics using `SQLAlchemy` and the `IGrap
 
 Once everything is in place, the analyzed graph can be created:
 
-```
+```Python
 import igraph
 from graphscraper.igraphwrapper import IGraphWrapper
 
@@ -28,7 +28,7 @@ graph = IGraphWrapper(igraph.Graph.Famous("Zachary"))
 
 The next step is the creation of the cluster definition and the preparation of the clustering algorithm:
 
-```
+```Python
 from localclustering.definitions.connectivity import ConnectivityClusterDefinition
 from localclustering.localengine import LocalClusterEngine
 
@@ -42,19 +42,19 @@ local_cluster_engine = LocalClusterEngine(
 
 Now the source node of the clustering must be retrieved:
 
-```
+```Python
 source_node = graph.nodes.get_node_by_name("2", can_validate_and_load=True)
 ```
 
 And finally the cluster analysis can be executed:
 
-```
+```Python
 cluster = local_cluster_engine.cluster([source_node])
 ```
 
 Additionally you can list the nodes inside the cluster with their rank to get an overview of the result:
 
-```
+```Python
 rank_provider = local_cluster_engine.get_rank_provider()
 for node in cluster.nodes:
     print(node.igraph_index, rank_provider.get_node_rank(node))
@@ -64,7 +64,7 @@ for node in cluster.nodes:
 
 ## Additional resources
 
-In addition to the software, a detailed [description](documents/algorithm.rst)and an in-depth [evaluation](documents/Algorithm%20Analysis%20with%20the%20Spotify%20Related%20Artists%20Graph.ipynb) of the algorithms is also provided.
+In addition to the software, a detailed [description](documents/algorithm.rst) and an in-depth [evaluation](documents/Algorithm%20Analysis%20with%20the%20Spotify%20Related%20Artists%20Graph.ipynb) of the algorithms is also provided.
 
 Furthermore, a `demo` module showing the basic usage of the project is also available.
 
@@ -72,7 +72,7 @@ Furthermore, a `demo` module showing the basic usage of the project is also avai
 
 Any form of constructive contribution is welcome:
 
-- Questions, feedback, bug reports: please open an issue in the issue tracker of the project or contact the repository owner in email, whichever you feel appropriate.
+- Questions, feedback, bug reports: please open an issue in the issue tracker of the project or contact the repository owner by email, whichever you feel appropriate.
 - Contribution to the software: please open an issue in the issue tracker of the project that describes the changes you would like to make to the software and open a pull request with the changes. The description of the pull request must references the corresponding issue.
 
 The following types of contribution are especially appreciated:
