@@ -152,8 +152,8 @@ Cluster definitions
 ========================
 
 As already mentioned in the previous sections, a cluster definition - that is suitable for the
-various Hermina-Janos local clustering algorithms - must be able to answer the following two
-questions:
+various Hermina-Janos local clustering algorithms - must implement a cluster quality metric such
+as min-cut in a way that allows it to answer the following two questions for the clustering algorithms:
 
 1. Given a node that is in the neighbourhood of the current cluster and the current cluster
    itself, would adding the node to the cluster improve the cluster's quality?
@@ -164,7 +164,7 @@ Furthermore, for a cluster definition to be hierarchical, it must be able to adj
 its parameters and to do so in a way that allows more nodes to be included in the cluster during
 the next local clustering with the definition.
 
-Connectivity base cluster definition
+Connectivity based cluster definition
 -----------------------------------------
 
 The connectivity based cluster definition is the default cluster definition implementation in
@@ -190,7 +190,7 @@ The cluster definition has the following configurable parameters:
 The quality difference is calculated in the following way: sum the edge weights multiplied by
 the weighting coefficient for each edge that connects the given node to the cluster.
 
-The threshold is calculated in the following way. Take the minimum of the following values
+The threshold is calculated in the following way: take the minimum of the following values
 and multiply it by the threshold modifier:
 
 - Half the number of nodes in the cluster minus 1.
