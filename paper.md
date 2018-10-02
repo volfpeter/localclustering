@@ -22,13 +22,13 @@ Graph clustering algorithms aim to divide the nodes of a graph into one or more 
 
 For an overview of graph clustering algorithms see [@Schaeffer:2007]. The more developed field within graph clustering is global clustering. Global algorithms are allowed to look at the whole graph while calculating its clusters. Well known global clustering algorithms include [@Blondel:2008], [@Dongen:2000], [@Newman:2004], [@Newman:2006], [@Pons:2006] and [@Raghavan:2007].
 
-On the other hand, local clustering algorithms get a small set of source nodes (typically a single node) as input and calculate the cluster they belong to in the graph. While doing so, local algorithms are only allowed to look at the already visited nodes of the graph and their neighbours.
+Local clustering algorithms get a small set of source nodes (typically a single node) as input and calculate the cluster they belong to in the graph. While doing so, local algorithms are only allowed to look at the already visited nodes of the graph and their neighbours.
 
 Graph cluster analysis is used in a wide variety of fields. This project does not target one specific field, instead it aims to be a general tool for graph cluster analysis for cases where global cluster analysis is not applicable or practical for example because of the size of the data set or because a different (local) perspective is required.
 
 # Algorithm
 
-This Python project implements the Hermina-Janos local clustering algorithm and its hierarchical variation. The algorithms are independent of the used cluster definition, instead they define an [interface](src/localclustering/definitions/base.py) cluster definitions must implement. One such cluster definition, a simple connectivity based one, is available as part of the project and it was used to generate the example result below as well as all other results that can be found in the repository.
+This Python project implements the (hierarchical) Hermina-Janos local clustering algorithm. The algorithm is independent of the used cluster definition, instead it defines an [interface](src/localclustering/definitions/base.py) which cluster definitions must implement. One such cluster definition, a simple connectivity based one, is available as part of the project and it was used to generate the example figure as well as all other results that can be found in the repository.
 
 ![The cluster of Elvis Presley in Spotify's Related Artists graph.](documents/cluster_example.png)
 
