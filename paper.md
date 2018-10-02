@@ -96,7 +96,7 @@ A component for recording the steps the algorithms have taken is also provided. 
 
 # Ideas for future work
 
-- Reimplementation for parallel computing: Most of the calculations the algorithms make (the only exception being the actual cluster update) can be executed in parallel, that could significantly improve performace.
+- Reimplementation for parallel computing: Most of the calculations the algorithms make (the only exception being the actual cluster update) can be executed in parallel, that could significantly improve performance.
 - New cluster definitions: Only one cluster definition is provided in the project. More cluster definitions can be implemented for example by building on cluster quality metrics such as modularity [@Newman:2004].
 - Analysis of how cluster definitions should be configured for graphs with different characteristics.
 - Result comparison with global clustering algorithms on well-known and -analyzed graphs such as the Zachary karate club [@Zachary:1977].
