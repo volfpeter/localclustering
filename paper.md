@@ -32,7 +32,7 @@ This Python project implements the (hierarchical) Hermina-Janos local clustering
 
 ![The cluster of Elvis Presley in Spotify's Related Artists graph.](documents/cluster_example.png)
 
-The following sections provide a high-level overview of the algorithms and cluster definitions. For more details and analysis, please see the [algorithm description](documents/algorithm.rst) and [IPython notebook](documents/Algorithm%20Analysis%20with%20the%20Spotify%20Related%20Artists%20Graph.ipynb) that are provided as part of the project.
+The following sections provide a high-level overview of the algorithm and cluster definition. For more details and analysis, please see the [algorithm description](documents/algorithm.rst) and [IPython notebook](documents/Algorithm%20Analysis%20with%20the%20Spotify%20Related%20Artists%20Graph.ipynb) that are provided as part of the project.
 
 ## Local clustering algorithm
 
@@ -49,8 +49,8 @@ The hierarchical version of the Hermina-Janos local clustering algorithm extends
 
 Similarly to the base algorithm, the hierarchical Hermina-Janos algorithm is also an iterative process with the following two steps:
 
-1. Local clustering step: use the Hermina-Janos local clustering algorithm with the current configuration of the used cluster definition to calculate the cluster.
-2. Cluster definition relaxation step: this is a highly cluster definition-dependent step where the algorithm adjusts or relaxes the cluster definition's parameters so in the next iteration the local clustering algorithm will be able to further extend the cluster.
+1. Local clustering step: Use the Hermina-Janos local clustering algorithm with the current configuration of the used cluster definition to calculate the cluster.
+2. Cluster definition relaxation step: This is a highly cluster definition-dependent step where the algorithm adjusts or relaxes the cluster definition's parameters so in the next iteration the local clustering algorithm will be able to further extend the cluster.
 
 ## Cluster definitions
 
