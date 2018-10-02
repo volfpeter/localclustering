@@ -18,9 +18,9 @@ bibliography: paper.bib
 
 # Introduction
 
-Graph clustering algorithms aim to divide the nodes of a graph into one or more clusters based on some measure of similarity. There are many different ways to define a cluster depending on the goal of the analysis. In graph cluster analysis the usual definition of a cluster is a group of nodes that are relatively densely interconnected but have few connections towards the nodes outside the cluster.
+Graph clustering algorithms aim to divide the nodes of a graph into one or more clusters based on some measure of similarity. There are many different ways to define a cluster depending on the goal of the analysis. In graph cluster analysis the usual definition of a cluster is a group of nodes that are relatively densely interconnected but have few connections towards nodes outside of the cluster.
 
-For an overview of graph clustering see [@Schaeffer:2007]. The more developed field within graph clustering is global clustering. Global algorithms are allowed to look at the whole graph while calculating its clusters. Well known global clustering algorithms include [@Blondel:2008], [@Dongen:2000], [@Newman:2004], [@Newman:2006], [@Pons:2006] and [@Raghavan:2007].
+For an overview of graph clustering algorithms see [@Schaeffer:2007]. The more developed field within graph clustering is global clustering. Global algorithms are allowed to look at the whole graph while calculating its clusters. Well known global clustering algorithms include [@Blondel:2008], [@Dongen:2000], [@Newman:2004], [@Newman:2006], [@Pons:2006] and [@Raghavan:2007].
 
 On the other hand, local clustering algorithms get a small set of source nodes (typically a single node) as input and calculate the cluster they belong to in the graph. While doing so, local algorithms are only allowed to look at the already visited nodes of the graph and their neighbours.
 
