@@ -65,7 +65,7 @@ Furthermore, for a cluster definition to be hierarchical, it must be able to adj
 
 The connectivity based cluster definition is the default cluster definition implementation in this project that also happens to be a hierarchical one.
 
-The cluster definition broadly works the following way:
+The cluster definition broadly works in the following way:
 
 1. It calculates the *quality difference* the node provides or would provide for the cluster.
 2. It calculates the minimum quality difference - the *threshold* - to compare the quality difference to.
