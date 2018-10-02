@@ -18,21 +18,21 @@ bibliography: paper.bib
 
 # Introduction
 
-Graph clustering algorithms aim to divide the nodes of a graph into one or more groups or clusters based on some measure of similarity. There are many different ways to define a cluster depending on the goal of the analysis. In graph cluster analysis the usual definition of a cluster is a group of nodes that are relatively densely interconnected but have few connections towards the nodes outside the cluster.
+Graph clustering algorithms aim to divide the nodes of a graph into one or more clusters based on some measure of similarity. There are many different ways to define a cluster depending on the goal of the analysis. In graph cluster analysis the usual definition of a cluster is a group of nodes that are relatively densely interconnected but have few connections towards nodes outside of the cluster.
 
-For an overview of graph clustering see [@Schaeffer:2007]. The more developed field within graph clustering is global clustering. Global algorithms are allowed to look at the whole graph while calculating its clusters. Well known global clustering algorithms include [@Blondel:2008], [@Dongen:2000], [@Newman:2004], [@Newman:2006], [@Pons:2006] and [@Raghavan:2007].
+For an overview of graph clustering algorithms see [@Schaeffer:2007]. The more developed field within graph clustering is global clustering. Global algorithms are allowed to look at the whole graph while calculating its clusters. Well known global clustering algorithms include [@Blondel:2008], [@Dongen:2000], [@Newman:2004], [@Newman:2006], [@Pons:2006] and [@Raghavan:2007].
 
-On the other hand, local clustering algorithms get a small set of source nodes (typically a single node) as input and calculate the cluster they belong to in the graph. While doing so, local algorithms are only allowed to look at the already visited nodes of the graph and their neighbours.
+Local clustering algorithms get a small set of source nodes (typically a single node) as input and calculate the cluster they belong to in the graph. While doing so, local algorithms are only allowed to look at the already visited nodes of the graph and their neighbours.
 
 Graph cluster analysis is used in a wide variety of fields. This project does not target one specific field, instead it aims to be a general tool for graph cluster analysis for cases where global cluster analysis is not applicable or practical for example because of the size of the data set or because a different (local) perspective is required.
 
 # Algorithm
 
-This Python project implements the Hermina-Janos local clustering algorithm and its hierarchical variation. The algorithms are independent of the used cluster definition, instead they define an [interface](src/localclustering/definitions/base.py) cluster definitions must implement. One such cluster definition, a simple connectivity based one, is available as part of the project and it was used to generate the example result below as well as all other results that can be found in the repository.
+This Python project implements the (hierarchical) Hermina-Janos local clustering algorithm. The algorithm is independent of the used cluster definition, instead it defines an [interface](src/localclustering/definitions/base.py) which cluster definitions must implement. One such cluster definition, a simple connectivity based one, is available as part of the project and it was used to generate the example figure as well as all other results that can be found in the repository.
 
 ![The cluster of Elvis Presley in Spotify's Related Artists graph.](documents/cluster_example.png)
 
-The following sections provide a high-level overview of the algorithms and cluster definitions. For more details and analysis, please see the [algorithm description](documents/algorithm.rst) and [IPython notebook](documents/Algorithm%20Analysis%20with%20the%20Spotify%20Related%20Artists%20Graph.ipynb) that are provided as part of the project.
+The following sections provide a high-level overview of the algorithm and cluster definition. For more details and analysis, please see the [algorithm description](documents/algorithm.rst) and [IPython notebook](documents/Algorithm%20Analysis%20with%20the%20Spotify%20Related%20Artists%20Graph.ipynb) that are provided as part of the project.
 
 ## Local clustering algorithm
 
@@ -49,8 +49,8 @@ The hierarchical version of the Hermina-Janos local clustering algorithm extends
 
 Similarly to the base algorithm, the hierarchical Hermina-Janos algorithm is also an iterative process with the following two steps:
 
-1. Local clustering step: use the Hermina-Janos local clustering algorithm with the current configuration of the used cluster definition to calculate the cluster.
-2. Cluster definition relaxation step: this is a highly cluster definition-dependent step where the algorithm adjusts or relaxes the cluster definition's parameters so in the next iteration the local clustering algorithm will be able to further extend the cluster.
+1. Local clustering step: Use the Hermina-Janos local clustering algorithm with the current configuration of the used cluster definition to calculate the cluster.
+2. Cluster definition relaxation step: This is a highly cluster definition-dependent step where the algorithm adjusts or relaxes the cluster definition's parameters so in the next iteration the local clustering algorithm will be able to further extend the cluster.
 
 ## Cluster definitions
 
@@ -63,9 +63,9 @@ Furthermore, for a cluster definition to be hierarchical, it must be able to adj
 
 ### Connectivity based cluster definition
 
-The connectivity based cluster definition is the default cluster definition implementation in this project that also happens to be a hierarchical one.
+The connectivity based cluster definition is the default (hierarchical) cluster definition implementation in this project.
 
-The cluster definition broadly works the following way:
+The cluster definition broadly works in the following way:
 
 1. It calculates the *quality difference* the node provides or would provide for the cluster.
 2. It calculates the minimum quality difference - the *threshold* - to compare the quality difference to.
@@ -96,7 +96,7 @@ A component for recording the steps the algorithms have taken is also provided. 
 
 # Ideas for future work
 
-- Reimplementation for parallel computing: Most of the calculations the algorithms make (the only exception being the actual cluster update) can be executed in parallel, that could significantly improve performace.
+- Reimplementation for parallel computing: Most of the calculations the algorithms make (the only exception being the actual cluster update) can be executed in parallel, which could significantly improve performance.
 - New cluster definitions: Only one cluster definition is provided in the project. More cluster definitions can be implemented for example by building on cluster quality metrics such as modularity [@Newman:2004].
 - Analysis of how cluster definitions should be configured for graphs with different characteristics.
 - Result comparison with global clustering algorithms on well-known and -analyzed graphs such as the Zachary karate club [@Zachary:1977].
