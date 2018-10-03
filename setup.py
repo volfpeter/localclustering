@@ -8,7 +8,7 @@ with open(path.join(path.abspath(path.dirname(__file__)), 'pypi_readme.md'), enc
 
 setup(
     name="localclustering",
-    version="0.11.0",
+    version="0.12.0",
     description="Python 3 implementation and documentation of the Hermina-Janos local "
                 "graph clustering algorithm.",
     long_description=long_description,
@@ -17,7 +17,7 @@ setup(
     author_email="do.volfp@gmail.com",
     license="AGPLv3+",
     classifiers=[
-        "Development Status :: 4 - Beta",
+        "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         "Intended Audience :: Information Technology",
         "Intended Audience :: Science/Research",

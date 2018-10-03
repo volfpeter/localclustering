@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1443551.svg)](https://doi.org/10.5281/zenodo.1443551)
+
 # LocalClustering
 
 The project implements multiple variations of a *local* graph clustering algorithm named the *Hermina-Janos algorithm* in memory of my beloved grandparents.
