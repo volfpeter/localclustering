@@ -1,4 +1,5 @@
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.00960/status.svg)](https://doi.org/10.21105/joss.00960) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1443550.svg)](https://doi.org/10.5281/zenodo.1443550)
+[![Downloads](https://pepy.tech/badge/localclustering)](https://pepy.tech/project/localclustering)
 
 # LocalClustering
 
