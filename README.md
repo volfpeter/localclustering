@@ -11,10 +11,7 @@ The algorithms are independent of the cluster definition. The interface cluster 
 
 ## Installation
 
-1. Install the latest version of the project from the Python Package Index using `pip install localclustering`.
-2. The only dependency of this project is the [`graphscraper`](https://pypi.org/project/graphscraper/) project. `graphscraper` should already be installed after `pip install localclustering`, but it has optional dependencies, one of which must be available on your system:
-   * `SQLAlchemy`: It can be installed with `pip install SQLAlchemy`.
-   * `Flask-SQLAlchemy`: It can be installed with `pip install Flask-SQLAlchemy`.
+Install the latest version of the project from the Python Package Index using `pip install localclustering`.
 
 ## Getting started
 

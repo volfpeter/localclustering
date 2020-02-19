@@ -8,7 +8,7 @@ with open(path.join(path.abspath(path.dirname(__file__)), 'pypi_readme.md'), enc
 
 setup(
     name="localclustering",
-    version="0.12.0",
+    version="0.13.0",
     description="Python 3 implementation and documentation of the Hermina-Janos local "
                 "graph clustering algorithm.",
     long_description=long_description,
@@ -34,6 +34,6 @@ setup(
     keywords="graph network analysis cluster clustering ranking local hierarchical algorithm",
     package_dir={"": "src"},
     packages=find_packages("src"),
-    install_requires=["graphscraper>=0.4"],
+    install_requires=["graphscraper>=0.5"],
     python_requires=">=3.5"
 )
