@@ -12,6 +12,7 @@ setup(
     description="Python 3 implementation and documentation of the Hermina-Janos local "
                 "graph clustering algorithm.",
     long_description=long_description,
+    long_description_content_type="text/markdown",
     url="https://github.com/volfpeter/localclustering",
     author="Peter Volf",
     author_email="do.volfp@gmail.com",
