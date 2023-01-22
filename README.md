@@ -68,6 +68,12 @@ In addition to the software, a detailed [description](documents/algorithm.rst) a
 
 Furthermore, a `demo` module showing the basic usage of the project is also available.
 
+## Related projects
+
+You can find related projects here:
+
+- [graphscraper](https://github.com/volfpeter/graphscraper)
+
 ## Community guidelines
 
 Any form of constructive contribution is welcome:
